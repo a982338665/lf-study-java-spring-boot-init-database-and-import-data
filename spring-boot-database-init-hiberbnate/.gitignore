@@ -27,7 +27,7 @@ MANIFEST.MF
 settings.xml
 activemq-data
 overridedb.*
-*.iml
+*.1iml
 *.ipr
 *.iws
 .idea
