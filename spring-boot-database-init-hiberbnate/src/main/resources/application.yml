@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: spring-boot-jpa
+  jpa:
+    # jpa默认建表引擎为MyISAM，若要修改则进行以下配置改为innoDB
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    generate-ddl: false
+    show-sql: true
+    # 最常用的属性，第一次加载hibernate时根据model类会自动建立起表的结构
+    #（前提是先建立好数据库），以后加载hibernate时根据 model类自动更新表结构，
+    # 即使表结构改变了但表中的行仍然存在不会删除以前的行。要注意的是当部署到服务器后，
+    # 表结构是不会被马上建立起来的，是要等应用第一次运行起来后才会。
+    hibernate:
+      ddl-auto: update
+  datasource:
+    database: MYSQL
+    continue-on-error: false
+    driver-class-name: com.mysql.jdbc.Driver
+    # 路径后面必填 --> 使用utf8 否则会乱码
+    url: jdbc:mysql://localhost:3306/jpa?useSSL=false&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+
+    # 以下两个配置项不做配置时，默认执行 schema.sql 和 data.sql
+    # 若配置，则读取配置项
+    # 启动时需要初始化的建表语句
+    #    schema: classpath:database/schema-mysql.sql
+    # 初始化的数据
+    #    data: classpath:database/data-mysql.sql
+    # 乱码解决
+    sql-script-encoding: utf-8
+
+
+
+    # 注意书写方式,-后面有一个空格,classpath:name.sql中间却没有空格
+    # 当重写schema时，schema.sql不执行，执行以下内容
+    # 当重写data时，data.sql不执行，执行以下内容
+    schema:
+      - classpath:database/test.sql
+#      - classpath:employee.sql
+    data:
+      - classpath:database/test1.sql
+      - classpath:database/test2.sql
+
+# initialization-mode初始化模式（springboot2.0）,其中有三个值：
+#    always为始终执行初始化，
+#    embedded只初始化内存数据库（默认值）,如h2等，
+#    never为不执行初始化
+# 要想仅执行一次：
+#    1.第一次always 之后never
+#    2.写的sql 要先验证数据是否存在
+    initialization-mode: always
+
+server:
+  port: 9090
