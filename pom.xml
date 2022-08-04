@@ -12,6 +12,7 @@
     <module>spring-boot-database-init-hiberbnate</module>
     <module>spring-boot-database-init-many-db</module>
     <module>spring-boot-database-init-other</module>
+    <module>spring-boot-application-profile-test</module>
   </modules>
 
 
