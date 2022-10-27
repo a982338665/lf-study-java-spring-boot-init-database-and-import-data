@@ -12,7 +12,11 @@
         project:/（项目根目录下面的配置文件-聚合项目也在根目录下，而不是当前子项目下）
         classpath:/config/（Resources文件夹下面config文件夹里的配置文件）
         classpath:/（Resources文件夹下面的配置文件））
+    而spring.config.additional-location则会进行覆盖（这里覆盖不一定就是外部配置文件覆盖内部配置文件），
+        例如 ：如果此时内部配置文件没有配置app.name 而外部配置文件配置了则会读取外部配置文件
 
+>java -jar demo-0.0.1-SNAPSHOT.jar --spring.config.location=./config/
+>java -jar -Dspring.profiles.active=test demo-0.0.1-SNAPSHOT.jar
 
 
 
