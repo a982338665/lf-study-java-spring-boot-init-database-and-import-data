@@ -73,3 +73,7 @@
     
     mvn clean package -Pprod -D maven.test.skip=true 
     mvn clean package -D maven.test.skip=true -P dev
+
+## 3.启动命令
+
+    java -jar spring-boot-application-profile-idea-assembly-test-2.1.3.RELEASE.jar --spring.profiles.active=dev
