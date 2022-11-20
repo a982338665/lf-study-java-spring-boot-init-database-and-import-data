@@ -15,6 +15,7 @@
     <module>spring-boot-application-profile-test</module>
     <module>spring-boot-database-init-other-listener</module>
     <module>spring-boot-application-profile-idea-assembly-test</module>
+    <module>spring-boot-application-profile-idea-test</module>
   </modules>
 
 

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.3.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>spring-boot-application-profile-idea-test</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+
+
+    <!--配置环境的profile-->
+    <profiles>
+        <profile>
+            <!--id表示激活指定的唯一命名ID，activation表示激活方面的配置，-->
+            <id>dev</id>
+            <properties>
+                <!--使用${environment}获取值-->
+                <environment>dev</environment>
+            </properties>
+            <activation>
+                <!--activeByDefault为True表示默认激活。-->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <environment>test</environment>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <environment>prod</environment>
+            </properties>
+        </profile>
+    </profiles>
+    <build>
+        <!-- 如果需要重命名包名此处进行，否则默认 -->
+        <!--        <finalName>hhInterface-xxl-${environment}</finalName>-->
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <includeSystemScope>true</includeSystemScope>
+                </configuration>
+            </plugin>
+        </plugins>
+        <resources>
+            <!--排除环境配置文件-->
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>application-*.yml</exclude>
+                    <exclude>application.yml</exclude>
+                </excludes>
+            </resource>
+
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <!-- 打包时包含的文件 -->
+                <includes>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <!--${environment} 即为profile - properties - 下的自定义标签-->
+                    <include>application-${environment}.yml</include>
+                    <include>application.yml</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+    <!--    <pluginRepositories>-->
+    <!--        <pluginRepository>-->
+    <!--            <id>spring-snapshots</id>-->
+    <!--            <url>http://repo.spring.io/libs-snapshot</url>-->
+    <!--        </pluginRepository>-->
+    <!--    </pluginRepositories>-->
+</project>
