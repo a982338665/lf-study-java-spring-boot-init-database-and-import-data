@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>pers.li</groupId>
-	<artifactId>spring-boot-database-init-other</artifactId>
+	<artifactId>spring-boot-database-init-other-listener</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-boot-database-init-other</name>
 	<description>Demo project for Spring Boot</description>
