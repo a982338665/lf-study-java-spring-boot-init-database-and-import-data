@@ -29,67 +29,67 @@
 
 
     <!--配置环境的profile-->
-    <profiles>
-        <profile>
-            <!--id表示激活指定的唯一命名ID，activation表示激活方面的配置，-->
-            <id>dev</id>
-            <properties>
-                <!--使用${environment}获取值-->
-                <environment>dev</environment>
-            </properties>
-            <activation>
-                <!--activeByDefault为True表示默认激活。-->
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-        <profile>
-            <id>test</id>
-            <properties>
-                <environment>test</environment>
-            </properties>
-        </profile>
-        <profile>
-            <id>prod</id>
-            <properties>
-                <environment>prod</environment>
-            </properties>
-        </profile>
-    </profiles>
-    <build>
-        <!-- 如果需要重命名包名此处进行，否则默认 -->
-        <!--        <finalName>hhInterface-xxl-${environment}</finalName>-->
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <includeSystemScope>true</includeSystemScope>
-                </configuration>
-            </plugin>
-        </plugins>
-        <resources>
-            <!--排除环境配置文件-->
-            <resource>
-                <directory>src/main/resources</directory>
-                <excludes>
-                    <exclude>application-*.yml</exclude>
-                    <exclude>application.yml</exclude>
-                </excludes>
-            </resource>
+<!--    <profiles>-->
+<!--        <profile>-->
+<!--            &lt;!&ndash;id表示激活指定的唯一命名ID，activation表示激活方面的配置，&ndash;&gt;-->
+<!--            <id>dev</id>-->
+<!--            <properties>-->
+<!--                &lt;!&ndash;使用${environment}获取值&ndash;&gt;-->
+<!--                <environment>dev</environment>-->
+<!--            </properties>-->
+<!--            <activation>-->
+<!--                &lt;!&ndash;activeByDefault为True表示默认激活。&ndash;&gt;-->
+<!--                <activeByDefault>true</activeByDefault>-->
+<!--            </activation>-->
+<!--        </profile>-->
+<!--        <profile>-->
+<!--            <id>test</id>-->
+<!--            <properties>-->
+<!--                <environment>test</environment>-->
+<!--            </properties>-->
+<!--        </profile>-->
+<!--        <profile>-->
+<!--            <id>prod</id>-->
+<!--            <properties>-->
+<!--                <environment>prod</environment>-->
+<!--            </properties>-->
+<!--        </profile>-->
+<!--    </profiles>-->
+<!--    <build>-->
+<!--        &lt;!&ndash; 如果需要重命名包名此处进行，否则默认 &ndash;&gt;-->
+<!--        &lt;!&ndash;        <finalName>hhInterface-xxl-${environment}</finalName>&ndash;&gt;-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <includeSystemScope>true</includeSystemScope>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--        <resources>-->
+<!--            &lt;!&ndash;排除环境配置文件&ndash;&gt;-->
+<!--            <resource>-->
+<!--                <directory>src/main/resources</directory>-->
+<!--                <excludes>-->
+<!--                    <exclude>application-*.yml</exclude>-->
+<!--                    <exclude>application.yml</exclude>-->
+<!--                </excludes>-->
+<!--            </resource>-->
 
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <!-- 打包时包含的文件 -->
-                <includes>
-                    <!--suppress UnresolvedMavenProperty -->
-                    <!--${environment} 即为profile - properties - 下的自定义标签-->
-                    <include>application-${environment}.yml</include>
-                    <include>application.yml</include>
-                </includes>
-            </resource>
-        </resources>
-    </build>
+<!--            <resource>-->
+<!--                <directory>src/main/resources</directory>-->
+<!--                <filtering>true</filtering>-->
+<!--                &lt;!&ndash; 打包时包含的文件 &ndash;&gt;-->
+<!--                <includes>-->
+<!--                    &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;-->
+<!--                    &lt;!&ndash;${environment} 即为profile - properties - 下的自定义标签&ndash;&gt;-->
+<!--                    <include>application-${environment}.yml</include>-->
+<!--                    <include>application.yml</include>-->
+<!--                </includes>-->
+<!--            </resource>-->
+<!--        </resources>-->
+<!--    </build>-->
 
     <!--    <pluginRepositories>-->
     <!--        <pluginRepository>-->
