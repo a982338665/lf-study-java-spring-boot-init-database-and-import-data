@@ -16,6 +16,7 @@
     <module>spring-boot-database-init-other-listener</module>
     <module>spring-boot-application-profile-idea-assembly-test</module>
     <module>spring-boot-application-profile-idea-test</module>
+    <module>spring-boot-magic-api-test</module>
   </modules>
 
 
