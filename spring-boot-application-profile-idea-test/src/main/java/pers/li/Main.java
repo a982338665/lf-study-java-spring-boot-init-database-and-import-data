@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
+import pers.li.config.listener.TestAnnotation;
 import pers.li.config.listener.TestProfile;
 import pers.li.config.listener.TestProfile2;
 
@@ -17,6 +18,8 @@ public class Main {
     TestProfile testProfile;
     @Autowired
     TestProfile2 testProfile2;
+    @Autowired
+    TestAnnotation testAnnotation;
     public static void main(String[] args) {
         SpringApplication springApplication = new SpringApplication(Main.class);
         springApplication.run(args);
@@ -26,5 +29,6 @@ public class Main {
     public void init() {
         System.err.println(testProfile);
         System.err.println(testProfile2);
+        System.err.println(testAnnotation);
     }
 }
